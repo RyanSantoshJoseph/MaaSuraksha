@@ -1,0 +1,98 @@
+/* ── Animations · Cinematic & 3D ── */
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px) translateZ(-20px);
+  animation: fadeUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.fade-down {
+  opacity: 0;
+  transform: translateY(-20px) translateZ(0);
+  animation: fadeDown 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* 3D Scroll Reveal */
+.reveal-3d {
+  opacity: 0;
+  transform: translateY(50px) rotateX(-15deg) scale(0.9);
+  transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+}
+
+.reveal-3d.active {
+  opacity: 1;
+  transform: translateY(0) rotateX(0) scale(1);
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0) translateZ(0);
+  }
+}
+
+@keyframes fadeDown {
+  to {
+    opacity: 1;
+    transform: translateY(0) translateZ(0);
+  }
+}
+
+/* ── Floating Animation ── */
+.float-anim {
+  animation: float3D 6s ease-in-out infinite;
+}
+
+@keyframes float3D {
+  0%, 100% {
+    transform: translateY(0) rotateX(0) rotateY(0);
+  }
+  25% {
+    transform: translateY(-10px) rotateX(2deg) rotateY(2deg);
+  }
+  50% {
+    transform: translateY(-15px) rotateX(0) rotateY(0);
+  }
+  75% {
+    transform: translateY(-10px) rotateX(-2deg) rotateY(-2deg);
+  }
+}
+
+/* ── Heart Loader ── */
+.heart {
+  width: 32px;
+  height: 32px;
+  background: var(--primary);
+  transform: rotate(45deg);
+  animation: heartbeat 1.4s ease-in-out infinite;
+  position: relative;
+  box-shadow: 0 0 20px var(--primary-glow);
+}
+
+.heart::before,
+.heart::after {
+  content: '';
+  width: 32px;
+  height: 32px;
+  background: var(--primary);
+  border-radius: 50%;
+  position: absolute;
+  box-shadow: 0 0 20px var(--primary-glow);
+}
+
+.heart::before {
+  top: -16px;
+  left: 0;
+}
+
+.heart::after {
+  left: -16px;
+  top: 0;
+}
+
+@keyframes heartbeat {
+  0% { transform: rotate(45deg) scale(1); opacity: 1; }
+  50% { transform: rotate(45deg) scale(1.15); opacity: 0.85; filter: brightness(1.2); }
+  100% { transform: rotate(45deg) scale(1); opacity: 1; }
+}

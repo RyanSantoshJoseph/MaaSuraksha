@@ -3,6 +3,19 @@ import sqlite3
 import joblib
 import numpy as np
 from flask import Flask, request, jsonify, send_from_directory, g, session
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return render_template("index.html")
+
+import os
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
 
 app = Flask(__name__, static_folder='.', template_folder='.')
 app.secret_key = 'super_secret_key_for_maasuraksha'
